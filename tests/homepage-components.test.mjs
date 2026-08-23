@@ -22,3 +22,12 @@ test("official Okayama University vector asset is available", () => {
   assert.match(header, /okayama-university\.svg/);
   assert.match(timeline, /okayama-university\.svg/);
 });
+
+test("homepage research cards use the dedicated visual asset pack", () => {
+  for (const asset of ["bnct-cellular-network.png", "atherox-biomarker-network.png"]) {
+    assert.equal(existsSync(file(`public/assets/${asset}`)), true, `${asset} is missing`);
+  }
+  const centers = readFileSync(file("src/components/BusinessCenters.astro"), "utf8");
+  assert.match(centers, /bnct-cellular-network\.png/);
+  assert.match(centers, /atherox-biomarker-network\.png/);
+});
