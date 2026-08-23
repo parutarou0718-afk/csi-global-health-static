@@ -4,6 +4,7 @@ const { lang, pathname } = Astro.props as { lang: Lang; pathname: string };
 ---
 <header class="site-header">
   <a class="brand" href={`/${lang}/`} aria-label={site.company}><img src="/assets/csi-mark.png" alt="" /><span><strong>{site.company}</strong><small>{site.tagline[lang]}</small></span></a>
+  <img class="header-okayama-mark" src="/assets/okayama-university.svg" alt="Okayama University" />
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">☰<span class="sr-only">Menu</span></button>
   <nav id="primary-navigation" class="main-nav" aria-label="Primary navigation">{nav[lang].map(([label, href]) => <a class:list={{active:pathname===href}} href={href}>{label}</a>)}</nav>
   <nav class="langs" aria-label="Language switcher">{langOrder.map(target => <a aria-current={target===lang ? "page" : undefined} href={pagePath(target, pathname)}>{target === "zh" ? "中" : target.toUpperCase()}</a>)}</nav>

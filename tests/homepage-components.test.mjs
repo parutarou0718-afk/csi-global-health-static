@@ -17,4 +17,8 @@ test("homepage is assembled from focused shared components", () => {
 
 test("official Okayama University vector asset is available", () => {
   assert.equal(existsSync(file("public/assets/okayama-university.svg")), true);
+  const header = readFileSync(file("src/components/Header.astro"), "utf8");
+  const timeline = readFileSync(file("src/components/HistoryTimeline.astro"), "utf8");
+  assert.match(header, /okayama-university\.svg/);
+  assert.match(timeline, /okayama-university\.svg/);
 });

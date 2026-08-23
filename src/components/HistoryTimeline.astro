@@ -1,4 +1,4 @@
 ---
 import { home, type Lang } from "../data/site"; const {lang}=Astro.props as {lang:Lang}; const t=home[lang];
 ---
-<section class="section"><h2 class="section-title">{t.historyTitle}</h2><ol class="timeline-card">{t.steps.map(([n,title,desc])=><li class="step"><div class="step-top"><span>{n}</span></div><h3>{title}</h3><p>{desc}</p></li>)}</ol></section>
+<section class="section"><h2 class="section-title">{t.historyTitle}</h2><ol class="timeline-card">{t.steps.map(([n,title,desc], index)=><li class="step"><div class="step-top"><span>{n}</span>{index===0 && <img src="/assets/okayama-university.svg" alt="Okayama University" />}</div><h3>{title}</h3><p>{desc}</p></li>)}</ol></section>
