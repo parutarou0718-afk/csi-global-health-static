@@ -3,6 +3,11 @@ import { home, type Lang } from "../data/site";
 
 const { lang } = Astro.props as { lang: Lang };
 const t = home[lang];
+const visuals = {
+  ja: { bnct: "BNCT細胞研究の抽象イメージ", atherox: "心血管バイオマーカー研究の抽象イメージ" },
+  en: { bnct: "Abstract BNCT cellular research visualization", atherox: "Abstract cardiometabolic biomarker research visualization" },
+  zh: { bnct: "BNCT细胞研究抽象图", atherox: "心血管生物标志物研究抽象图" }
+}[lang];
 ---
 
 <section class="section centers-section">
@@ -20,7 +25,10 @@ const t = home[lang];
         <a class="btn red" href={`/${lang}/bnct/`}>BNCT {t.view} <span aria-hidden="true">→</span></a>
       </div>
       <figure class="science-visual">
-        <img src="/assets/bnct-cellular-network.png" alt="Abstract BNCT cellular research visualization" loading="lazy" />
+        <picture>
+          <source srcset="/assets/bnct-cellular-network.webp" type="image/webp" />
+          <img src="/assets/bnct-cellular-network.png" alt={visuals.bnct} loading="lazy" width="1536" height="1024" />
+        </picture>
       </figure>
     </article>
     <article class="center-card atherox">
@@ -32,7 +40,10 @@ const t = home[lang];
         <a class="btn blue" href={`/${lang}/atherox/`}>AtherOx<sup>®</sup> {t.view} <span aria-hidden="true">→</span></a>
       </div>
       <figure class="science-visual">
-        <img src="/assets/atherox-biomarker-network.png" alt="Abstract cardiometabolic biomarker research visualization" loading="lazy" />
+        <picture>
+          <source srcset="/assets/atherox-biomarker-network.webp" type="image/webp" />
+          <img src="/assets/atherox-biomarker-network.png" alt={visuals.atherox} loading="lazy" width="1536" height="1024" />
+        </picture>
       </figure>
     </article>
   </div>

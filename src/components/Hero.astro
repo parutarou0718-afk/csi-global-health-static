@@ -1,4 +1,55 @@
 ---
-import { home, type Lang } from "../data/site"; const { lang }=Astro.props as {lang:Lang}; const t=home[lang];
+import { home, type Lang } from "../data/site";
+
+const { lang } = Astro.props as { lang: Lang };
+const t = home[lang];
+const networkTitle = lang === "ja"
+  ? "日本と米国を結ぶグローバル研究ネットワーク"
+  : lang === "zh"
+    ? "连接日本、美国与全球的科研网络"
+    : "Global research network linking Japan and the United States";
 ---
-<section class="hero"><div class="hero-copy"><div class="eyebrow">{t.eyebrow}</div><h1>{t.hero1}<br/><span>{t.hero2}</span></h1><h2><em>{t.hero3a}</em>{t.hero3b}</h2><p>{t.intro}</p><a class="btn red" href={`/${lang}/about/`}>{t.learn} →</a></div><div class="world-visual"><svg viewBox="0 0 600 330" role="img"><title>{lang==="ja"?"日本と米国を結ぶグローバル研究ネットワーク":lang==="zh"?"连接日本、美国与全球的科研网络":"Global research network linking Japan and the United States"}</title><ellipse cx="310" cy="165" rx="260" ry="115" fill="none" stroke="currentColor" opacity=".15"/><path d="M120 95Q280 35 400 160M200 230Q320 95 485 125" fill="none" stroke="currentColor" opacity=".35"/><circle cx="398" cy="160" r="9" fill="#d71936"/><circle cx="505" cy="115" r="7" fill="#0b62b0"/><circle cx="190" cy="85" r="7" fill="#0b62b0"/><circle cx="280" cy="205" r="7" fill="#0b62b0"/><text x="410" y="155">Japan</text><text x="515" y="110">USA</text><text x="145" y="78">Europe</text><text x="230" y="225">China / Asia</text></svg></div></section>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">{t.eyebrow}</div>
+    <h1>{t.hero1}<br /><span>{t.hero2}</span></h1>
+    <h2><em>{t.hero3a}</em>{t.hero3b}</h2>
+    <p>{t.intro}</p>
+    <a class="btn red" href={`/${lang}/about/`}>{t.learn} <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="world-visual">
+    <svg viewBox="0 0 760 410" role="img" aria-labelledby="network-title">
+      <title id="network-title">{networkTitle}</title>
+      <defs>
+        <pattern id="map-dots" width="6" height="6" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.1" fill="currentColor" />
+        </pattern>
+        <filter id="node-glow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="7" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      <g class="world-map" aria-hidden="true">
+        <path d="M62 109 93 82l44 8 18 18 38 3 17 18-20 15-31-5-21 23-38-7-16 27-26-9-2-31 20-15Z" fill="url(#map-dots)" />
+        <path d="m208 176 25 9 18 47-12 43-25 51-21-30 5-34-18-31 17-21Z" fill="url(#map-dots)" />
+        <path d="m320 125 36-20 39 8 15 24-17 18-21-3-17 28-35-9-18-24Z" fill="url(#map-dots)" />
+        <path d="m362 183 34 14 20 36-13 61-38 41-32-33 9-44-18-37 18-26Z" fill="url(#map-dots)" />
+        <path d="m426 106 50-18 59 10 30 29 62 14 47 35-17 25-47-3-21 26-47-4-22 25-48-10-29-35 9-45-25-22Z" fill="url(#map-dots)" />
+        <path d="m581 281 33-15 58 18 19 39-36 23-50-5-29-29Z" fill="url(#map-dots)" />
+      </g>
+      <g class="network-arcs" fill="none" stroke="currentColor" aria-hidden="true">
+        <ellipse cx="405" cy="205" rx="330" ry="145" opacity=".16" />
+        <path d="M520 177Q398 31 176 112M520 177Q630 71 680 166M520 177Q385 248 246 207M520 177Q440 312 627 301" opacity=".48" />
+        <path d="M520 177Q485 82 370 130M520 177Q565 249 636 285" opacity=".25" />
+      </g>
+      <g class="network-nodes">
+        <circle class="node-japan" cx="520" cy="177" r="10" filter="url(#node-glow)" />
+        <circle cx="676" cy="165" r="7" /><circle cx="176" cy="112" r="7" /><circle cx="246" cy="207" r="7" />
+      </g>
+      <g class="network-labels">
+        <text x="538" y="166">Japan</text><text x="687" y="156">USA</text><text x="132" y="102">Europe</text><text x="198" y="232">China / Asia</text>
+      </g>
+    </svg>
+  </div>
+</section>

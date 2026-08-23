@@ -1,6 +1,26 @@
 ---
-import { nav, site, type Lang } from "../data/site";
+import { home, nav, site, type Lang } from "../data/site";
+
 const { lang } = Astro.props as { lang: Lang };
-const items=nav[lang];
+const items = nav[lang];
+const t = home[lang];
+const labels = {
+  ja: { contact: "お問い合わせ", navigation: "ナビゲーション", research: "研究・ネットワーク" },
+  en: { contact: "Contact Us", navigation: "Navigation", research: "Research & Network" },
+  zh: { contact: "联系我们", navigation: "导航", research: "研究・网络" }
+}[lang];
 ---
-<footer class="footer"><div class="footer-cta"><div><strong>Building the Next Generation of Precision Medicine</strong><span>{lang==="ja"?"次世代の精密医療イノベーションを世界へ":lang==="zh"?"构建下一代精准医疗全球创新平台":"From science to medicine, from innovation to patients"}</span></div><a href={`/${lang}/contact/`}>{lang==="ja"?"お問い合わせ":lang==="zh"?"联系我们":"Contact Us"} →</a></div><div class="footer-grid"><div class="footer-brand"><img src="/assets/csi-mark.png" alt="" /><div><b>{site.company}</b><small>{site.tagline[lang]}</small><img class="okayama-mark" src="/assets/okayama-university.svg" alt="Okayama University" /></div></div><div><b>{lang==="ja"?"ナビゲーション":lang==="zh"?"导航":"Navigation"}</b>{items.slice(1,5).map(([l,h])=><a href={h}>{l}</a>)}</div><div><b>{lang==="ja"?"研究・ネットワーク":lang==="zh"?"研究・网络":"Research & Network"}</b>{items.slice(5,8).map(([l,h])=><a href={h}>{l}</a>)}</div><div><b>{lang==="ja"?"お問い合わせ":lang==="zh"?"联系方式":"Contact"}</b><span>{site.email}</span><span>{site.address[lang]}</span></div></div><div class="copyright">© 2026 CSI Global Health, Co., Ltd. All rights reserved.</div></footer>
+
+<footer class="footer">
+  <div class="footer-cta">
+    <div><strong>{t.cta}</strong><span>{t.ctaSub}</span></div>
+    <a href={`/${lang}/contact/`}>{labels.contact} <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand"><img src="/assets/csi-mark.png" alt="" /><div><b>{site.company}</b><small>{site.tagline[lang]}</small><img class="okayama-mark" src="/assets/okayama-university.svg" alt="Okayama University" /></div></div>
+    <div><b>{labels.navigation}</b>{items.slice(1, 5).map(([label, href]) => <a href={href}>{label}</a>)}</div>
+    <div><b>{labels.research}</b>{items.slice(5, 8).map(([label, href]) => <a href={href}>{label}</a>)}</div>
+    <div><b>{labels.contact}</b><span>{site.email}</span><span>{site.address[lang]}</span></div>
+  </div>
+  <div class="copyright">© 2026 CSI Global Health, Co., Ltd. All rights reserved.</div>
+</footer>
