@@ -1,8 +1,11 @@
 
 export type Lang = "ja" | "en" | "zh";
+export const langOrder: Lang[] = ["ja", "en", "zh"];
+export function pagePath(lang: Lang, pathname: string): string { const stripped=pathname.replace(/^\/(ja|en|zh)(?=\/|$)/, ""); return `/${lang}${stripped==="/"?"/":stripped}`; }
 
 export const site = {
   company: "CSI Global Health, Co., Ltd.",
+  tagline: { ja: "大学発バイオメディカル・スタートアップ", en: "University-based Biomedical Start Up", zh: "大学科研型生物医疗创新企业" },
   email: "info@csi-globalhealth.com",
   address: {
     ja: "〒700-8530 岡山県岡山市北区津島中1-1-1 岡山大学内",

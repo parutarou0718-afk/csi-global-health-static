@@ -1,0 +1,4 @@
+---
+import { home, type Lang } from "../data/site"; const {lang}=Astro.props as {lang:Lang}; const t=home[lang];
+---
+<section class="section"><h2 class="section-title">{t.researchTitle}</h2><div class="news-grid">{t.cards.map(([title,desc],idx)=><article class="news-card"><span>{["▤","▭","◈"][idx]}</span><div><h3>{title}</h3><p>{desc}</p><a href={`/${lang}/news/`}>{t.view} →</a></div></article>)}</div></section>

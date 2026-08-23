@@ -1,0 +1,4 @@
+---
+import { advisors, home, type Lang } from "../data/site"; const {lang}=Astro.props as {lang:Lang}; const t=home[lang];
+---
+<section class="section advisors-section"><h2 class="section-title">{t.advisorsTitle}</h2><div class="advisor-grid">{advisors.map(a=><article class="advisor-card"><img src={a.image} alt={a.name}/><div><h3>{a[lang][0]}</h3><b>{a[lang][1]}</b><p>{a[lang][2]}</p></div></article>)}</div><a class="outline-link" href={`/${lang}/advisors/`}>{lang==="ja"?"科学顧問一覧を見る":lang==="zh"?"查看全部科学顾问":"View all scientific advisors"} →</a></section>

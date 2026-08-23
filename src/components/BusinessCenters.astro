@@ -1,0 +1,4 @@
+---
+import { home, type Lang } from "../data/site"; const {lang}=Astro.props as {lang:Lang}; const t=home[lang];
+---
+<section class="section"><h2 class="section-title">{t.centersTitle}</h2><div class="dual-centers"><article class="center-card bnct"><div><span class="kicker">01 / JAPAN</span><h3>BNCT</h3><h4>{t.bnctSub}</h4><p>{t.bnctText}</p><a class="btn red" href={`/${lang}/bnct/`}>BNCT {t.view} →</a></div><div class="science-art bnct-art"><i></i><i></i></div></article><article class="center-card atherox"><div><span class="kicker">02 / USA</span><h3>AtherOx®</h3><h4>{t.atheroxSub}</h4><p>{t.atheroxText}</p><a class="btn blue" href={`/${lang}/atherox/`}>AtherOx® {t.view} →</a></div><div class="science-art atherox-art"><i></i><i></i></div></article></div></section>

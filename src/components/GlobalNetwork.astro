@@ -1,0 +1,4 @@
+---
+import { home, type Lang } from "../data/site"; const {lang}=Astro.props as {lang:Lang}; const t=home[lang];
+---
+<section class="section"><h2 class="section-title">{t.globalTitle}</h2><div class="network-card"><div class="network-hub"><h3>Japan (Okayama)</h3><b>CSI Global Health, Co., Ltd.</b><p>University research &amp; translation hub</p></div><div class="network-line">●──────●</div><div class="network-hub"><h3>United States</h3><b>Cardiovascular Solutions and Innovations, LLC</b><p>AtherOx® / Cardiovascular biomarker research</p></div><div class="network-line">●──────●</div><div class="network-hub"><h3>{lang==="zh"?"全球合作网络":lang==="ja"?"グローバル・パートナーネットワーク":"Global Partner Network"}</h3><p>Europe / USA / Japan / China / Asia</p></div></div></section>
