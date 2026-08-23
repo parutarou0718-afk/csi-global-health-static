@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Lang } from "../data/site";
+const { lang, title, lead, sections=[] } = Astro.props as { lang:Lang; title:string; lead:string; sections:Array<{title:string,body:string}> };
+---
+<BaseLayout lang={lang} title={`${title} | CSI Global Health`}>
+<section class="subhero"><div><span>CSI Global Health</span><h1>{title}</h1><p>{lead}</p></div></section>
+<section class="content-page">
+  {sections.map(s => <article><h2>{s.title}</h2><p>{s.body}</p></article>)}
+</section>
+</BaseLayout>

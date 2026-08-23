@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+import { nav, site, type Lang } from "../data/site";
+const { lang, title = site.company } = Astro.props as { lang: Lang; title?: string };
+const items = nav[lang];
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang={lang === "zh" ? "zh-CN" : lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CSI Global Health — university-based biomedical innovation platform connecting Japan, the United States and global scientific networks." />
+  <title>{title}</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href={`/${lang}/`}>
+      <img src="/assets/csi-mark.png" alt="CSI" />
+      <span><strong>CSI Global Health, Co., Ltd.</strong><small>{lang==="ja"?"大学発バイオメディカル・スタートアップ":lang==="zh"?"大学科研型生物医疗创新企业":"University-based Biomedical Start Up"}</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+    <nav class="main-nav">
+      {items.map(([label, href]) => <a class:list={{active:path===href}} href={href}>{label}</a>)}
+    </nav>
+    <div class="langs"><a href="/en/">EN</a><span>|</span><a href="/ja/">JP</a><span>|</span><a href="/zh/">中</a></div>
+  </header>
+  <main><slot /></main>
+  <footer class="footer">
+    <div class="footer-cta">
+      <div><strong>Building the Next Generation of Precision Medicine</strong><span>{lang==="ja"?"次世代の精密医療イノベーションを世界へ":lang==="zh"?"构建下一代精准医疗全球创新平台":"From science to medicine, from innovation to patients"}</span></div>
+      <a href={`/${lang}/contact/`}>{lang==="ja"?"お問い合わせ":lang==="zh"?"联系我们":"Contact Us"} →</a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="/assets/csi-mark.png" alt="" /><div><b>{site.company}</b><small>{lang==="ja"?"日本・米国二拠点から世界へ":lang==="zh"?"日本・美国双中心连接全球":"Japan–USA dual hubs connecting globally"}</small></div></div>
+      <div><b>{lang==="ja"?"ナビゲーション":lang==="zh"?"导航":"Navigation"}</b>{items.slice(1,5).map(([l,h])=><a href={h}>{l}</a>)}</div>
+      <div><b>{lang==="ja"?"研究・ネットワーク":lang==="zh"?"研究・网络":"Research & Network"}</b>{items.slice(5,8).map(([l,h])=><a href={h}>{l}</a>)}</div>
+      <div><b>{lang==="ja"?"お問い合わせ":lang==="zh"?"联系方式":"Contact"}</b><span>{site.email}</span><span>{site.address[lang]}</span></div>
+    </div>
+    <div class="copyright">© 2026 CSI Global Health, Co., Ltd. All rights reserved.</div>
+  </footer>
+</body>
+</html>

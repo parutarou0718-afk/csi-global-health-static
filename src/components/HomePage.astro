@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { home, advisors, type Lang } from "../data/site";
+const { lang } = Astro.props as { lang: Lang };
+const t = home[lang];
+const advisorKey = lang as "ja" | "en" | "zh";
+---
+<BaseLayout lang={lang}>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">{t.eyebrow}</div>
+      <h1>{t.hero1}<br/><span>{t.hero2}</span></h1>
+      <h2><em>{t.hero3a}</em>{t.hero3b}</h2>
+      <p>{t.intro}</p>
+      <a class="btn red" href={`/${lang}/about/`}>{t.learn} →</a>
+    </div>
+    <div class="world-visual" aria-hidden="true">
+      <div class="globe-grid"></div>
+      <div class="node japan">Japan</div><div class="node usa">USA</div><div class="node europe">Europe</div><div class="node asia">China / Asia</div>
+      <span class="arc a1"></span><span class="arc a2"></span><span class="arc a3"></span>
+      <div class="pulse"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">{t.historyTitle}</h2>
+    <div class="timeline-card">
+      {t.steps.map(([n,title,desc], i) => (
+        <div class="step">
+          <div class="step-top"><span>{n}</span>{i===0 && <img src="/assets/okayama-university.jpg" alt="Okayama University" />}{i===1 && <img class="mini-mark" src="/assets/csi-mark.png" alt="CSI" />}{i===2 && <b class="flags">🇯🇵 🇺🇸</b>}{i===3 && <b class="globe-icon">◎</b>}</div>
+          <h3>{title}</h3><p>{desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">{t.centersTitle}</h2>
+    <div class="dual-centers">
+      <article class="center-card bnct">
+        <div><span class="kicker">01 / JAPAN</span><h3>{t.bnctTitle}</h3><h4>{t.bnctSub}</h4><p>{t.bnctText}</p><a class="btn red" href={`/${lang}/bnct/`}>{t.bnctTitle} {t.view} →</a></div>
+        <div class="science-art bnct-art"><i></i><i></i><i></i></div>
+      </article>
+      <article class="center-card atherox">
+        <div><span class="kicker">02 / USA</span><h3>{t.atheroxTitle}</h3><h4>{t.atheroxSub}</h4><p>{t.atheroxText}</p><a class="btn blue" href={`/${lang}/atherox/`}>{t.atheroxTitle} {t.view} →</a></div>
+        <div class="science-art atherox-art"><i></i><i></i><i></i></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section advisors-section">
+    <h2 class="section-title">{t.advisorsTitle}</h2>
+    <div class="advisor-grid">
+      {advisors.map((a) => (
+        <article class="advisor-card">
+          <img src={a.image} alt={a.name} />
+          <div><h3>{a[advisorKey][0]}</h3><b>{a[advisorKey][1]}</b><p>{a[advisorKey][2]}</p></div>
+        </article>
+      ))}
+    </div>
+    <a class="outline-link" href={`/${lang}/advisors/`}>{lang==="ja"?"科学顧問一覧を見る":lang==="zh"?"查看全部科学顾问":"View all scientific advisors"} →</a>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">{t.globalTitle}</h2>
+    <div class="network-card">
+      <div class="network-hub"><span>🇯🇵</span><h3>{lang==="ja"?"日本（岡山）":lang==="zh"?"日本（冈山）":"Japan (Okayama)"}</h3><b>CSI Global Health, Co., Ltd.</b><p>{lang==="ja"?"大学研究・トランスレーション拠点":lang==="zh"?"大学研究与转化中心":"University research & translation hub"}</p></div>
+      <div class="network-line">●──────●</div>
+      <div class="network-hub"><span>🇺🇸</span><h3>{lang==="ja"?"米国":lang==="zh"?"美国":"United States"}</h3><b>Cardiovascular Solutions and Innovations, LLC</b><p>AtherOx® / Cardiovascular biomarker research</p></div>
+      <div class="network-line">●──────●</div>
+      <div class="network-hub"><span>🌐</span><h3>{lang==="ja"?"グローバル・パートナーネットワーク":lang==="zh"?"全球合作网络":"Global Partner Network"}</h3><p>Europe / USA / Japan / China / Asia</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">{t.researchTitle}</h2>
+    <div class="news-grid">
+      {t.cards.map(([title,desc], idx)=><article class="news-card"><span>{["▤","▭","◈"][idx]}</span><div><h3>{title}</h3><p>{desc}</p><a href={`/${lang}/news/`}>{t.view} →</a></div></article>)}
+    </div>
+  </section>
+</BaseLayout>
