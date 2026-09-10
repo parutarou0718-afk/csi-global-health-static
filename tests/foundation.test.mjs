@@ -67,3 +67,10 @@ test("handoff documentation defines the V1 content boundaries", () => {
   assert.match(readme, /\/ja\//);
   assert.doesNotMatch(readme, /Languages:.*Chinese/);
 });
+
+test("homepage content uses the supplied static network map and bilingual source data", () => {
+  const home = readFileSync(file("src/data/home.ts"), "utf8");
+  assert.match(home, /global-network-map\.png/);
+  assert.match(home, /export const homeContent/);
+  assert.equal(existsSync(file("public/images/home/global-network-map.png")), true);
+});
