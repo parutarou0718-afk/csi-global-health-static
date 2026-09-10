@@ -1,26 +1,46 @@
 ---
-import { home, nav, site, type Lang } from "../data/site";
+import { companyContact, companyProfile } from "../data/company";
+import { navigation as enNavigation } from "../i18n/en";
+import { navigation as jaNavigation } from "../i18n/ja";
+import type { Lang } from "../lib/i18n";
 
 const { lang } = Astro.props as { lang: Lang };
-const items = nav[lang];
-const t = home[lang];
-const labels = {
-  ja: { contact: "お問い合わせ", navigation: "ナビゲーション", research: "研究・ネットワーク" },
-  en: { contact: "Contact Us", navigation: "Navigation", research: "Research & Network" },
-  zh: { contact: "联系我们", navigation: "导航", research: "研究・网络" }
-}[lang];
+const navigation = lang === "en" ? enNavigation : jaNavigation;
+const contactHeading = lang === "en" ? "Contact" : "お問い合わせ";
+const navigationHeading = lang === "en" ? "Navigation" : "ナビゲーション";
+const placeholderNote = lang === "en"
+  ? "Public contact details are being confirmed."
+  : "公開連絡先情報は確認中です。";
+const hasVerifiedContact = Object.values(companyContact).some((item) => item.status === "verified");
 ---
 
-<footer class="footer">
-  <div class="footer-cta">
-    <div><strong>{t.cta}</strong><span>{t.ctaSub}</span></div>
-    <a href={`/${lang}/contact/`}>{labels.contact} <span aria-hidden="true">→</span></a>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-brand" href={`/${lang}/`}>
+        <img src="/assets/csi-mark.png" alt="" />
+        <span>
+          <strong>{companyProfile.name}</strong>
+          <small>{companyProfile.tagline[lang]}</small>
+        </span>
+      </a>
+    </div>
+    <div>
+      <h2>{navigationHeading}</h2>
+      <nav aria-label="Footer navigation">
+        {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+    </div>
+    <div>
+      <h2>{contactHeading}</h2>
+      {hasVerifiedContact ? (
+        <ul>
+          {Object.values(companyContact).filter((item) => item.status === "verified").map((item) => (
+            <li>{item.label[lang]}: {item.value[lang]}</li>
+          ))}
+        </ul>
+      ) : <p>{placeholderNote}</p>}
+    </div>
   </div>
-  <div class="footer-grid">
-    <div class="footer-brand"><img src="/assets/csi-mark.png" alt="" /><div><b>{site.company}</b><small>{site.tagline[lang]}</small><img class="okayama-mark" src="/assets/okayama-university.svg" alt="Okayama University" /></div></div>
-    <div><b>{labels.navigation}</b>{items.slice(1, 5).map(([label, href]) => <a href={href}>{label}</a>)}</div>
-    <div><b>{labels.research}</b>{items.slice(5, 8).map(([label, href]) => <a href={href}>{label}</a>)}</div>
-    <div><b>{labels.contact}</b><span>{site.email}</span><span>{site.address[lang]}</span></div>
-  </div>
-  <div class="copyright">© 2026 CSI Global Health, Co., Ltd. All rights reserved.</div>
+  <div class="container footer-legal">© {new Date().getFullYear()} {companyProfile.name}. All rights reserved.</div>
 </footer>

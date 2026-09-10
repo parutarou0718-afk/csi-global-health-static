@@ -1,5 +1,7 @@
 ---
-import GenericPage from "../../components/GenericPage.astro";
-const sections = [{"title": "Contact", "body": "Email: info@csi-globalhealth.com\n\nAddress: 1-1-1 Tsushima-naka, Kita-ku, Okayama 700-8530, Japan"}];
+import PagePlaceholder from "../../components/PagePlaceholder.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
-<GenericPage lang="en" title="Contact" lead="For research, technology and business collaboration inquiries." sections={sections} />
+<BaseLayout lang="en" title="Contact | CSI Global Health" description="Contact CSI Global Health.">
+  <PagePlaceholder lang="en" title="Contact" lead="Public contact details are being confirmed." />
+</BaseLayout>

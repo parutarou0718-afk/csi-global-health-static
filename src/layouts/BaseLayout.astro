@@ -1,5 +1,35 @@
 ---
-import "../styles/global.css"; import { site, type Lang } from "../data/site"; import Header from "../components/Header.astro"; import Footer from "../components/Footer.astro";
-const {lang,title=site.company}=Astro.props as {lang:Lang;title?:string};
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import type { Lang } from "../lib/i18n";
+import "../styles/global.css";
+
+const { lang, title, description, image } = Astro.props as {
+  lang: Lang;
+  title: string;
+  description: string;
+  image?: string;
+};
+const canonical = new URL(Astro.url.pathname, Astro.url.origin).href;
+const socialImage = image ? new URL(image, Astro.url.origin).href : undefined;
 ---
-<!doctype html><html lang={lang==="zh"?"zh-CN":lang}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content="CSI Global Health — university-based biomedical innovation platform."/><title>{title}</title></head><body><Header lang={lang} pathname={Astro.url.pathname}/><main><slot/></main><Footer lang={lang}/></body></html>
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header lang={lang} pathname={Astro.url.pathname} />
+    <main><slot /></main>
+    <Footer lang={lang} />
+  </body>
+</html>

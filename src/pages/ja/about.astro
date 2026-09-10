@@ -1,5 +1,7 @@
 ---
-import GenericPage from "../../components/GenericPage.astro";
-const sections = [{"title": "会社定位", "body": "CSI Global Health, Co., Ltd.は、医学、薬学、中性子治療および関連分野の研究基盤を背景に、基礎研究から技術開発、臨床応用、産業化、国際展開までをつなぐ医療技術イノベーション企業です。"}, {"title": "ビジョン", "body": "大学、研究機関、医療機関、産業パートナーと世界市場を結び、臨床的価値を持つ研究成果をより速く患者へ届けることを目指します。"}];
+import PagePlaceholder from "../../components/PagePlaceholder.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
-<GenericPage lang="ja" title="CSIについて" lead="岡山大学の研究基盤を原点に、日本と米国の二拠点から世界へ。" sections={sections} />
+<BaseLayout lang="ja" title="CSIについて | CSI Global Health" description="CSI Global Health について。">
+  <PagePlaceholder lang="ja" title="CSIについて" />
+</BaseLayout>

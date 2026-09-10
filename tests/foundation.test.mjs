@@ -28,3 +28,23 @@ test("the planned V1 data modules exist", () => {
     assert.equal(existsSync(file(path)), true, `${path} is missing`);
   }
 });
+
+test("the public shell is EN/JP-only and root redirects to English", () => {
+  const header = readFileSync(file("src/components/Header.astro"), "utf8");
+  const root = readFileSync(file("src/pages/index.astro"), "utf8");
+  assert.match(header, /supportedLanguages/);
+  assert.doesNotMatch(header, /zh/);
+  assert.match(root, /redirect\("\/en\/"\)/);
+  assert.equal(existsSync(file("src/pages/zh/index.astro")), false);
+});
+
+test("EN and JP expose only the approved six top-level routes", () => {
+  for (const lang of ["en", "ja"]) {
+    for (const page of ["index", "about", "business", "experts", "news", "contact"]) {
+      assert.equal(existsSync(file(`src/pages/${lang}/${page}.astro`)), true, `${lang}/${page} is missing`);
+    }
+    for (const legacy of ["advisors", "atherox", "bnct", "history"]) {
+      assert.equal(existsSync(file(`src/pages/${lang}/${legacy}.astro`)), false, `${lang}/${legacy} is still public`);
+    }
+  }
+});

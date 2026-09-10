@@ -1,0 +1,15 @@
+---
+import type { Lang } from "../lib/i18n";
+
+const { lang, title, lead } = Astro.props as { lang: Lang; title: string; lead?: string };
+const message = lang === "en" ? "This section is being prepared." : "このセクションは準備中です。";
+---
+
+<section class="page-placeholder section">
+  <div class="container page-placeholder__inner">
+    <p class="eyebrow">CSI Global Health</p>
+    <h1>{title}</h1>
+    {lead && <p class="page-placeholder__lead">{lead}</p>}
+    <p>{message}</p>
+  </div>
+</section>
