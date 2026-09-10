@@ -13,11 +13,11 @@ No source grants permission to invent a company fact, relationship, medical clai
 
 ## Languages and routes
 
-English, Japanese and Simplified Chinese are first-class language variants. Every public page has a corresponding same-page language link.
+Version 1 officially supports English and Japanese only. Every public page has a corresponding same-page language link. The route and data boundaries must make a future Simplified Chinese variant straightforward, but V1 has no `/zh/` route, Chinese i18n module, route-equivalence requirement or public language-switcher entry.
 
 | Area | Routes |
 | --- | --- |
-| Home | `/en/`, `/ja/`, `/zh/` |
+| Home | `/en/`, `/ja/` |
 | About | `/{lang}/about/` |
 | Business | `/{lang}/business/` |
 | Experts | `/{lang}/experts/` |
@@ -62,7 +62,7 @@ Existing responsive hero/network visual work and verified visual assets are reta
 
 ## Data and content model
 
-Company profile, verified global-structure facts and contact data move to `src/data/company.ts`. Six business records move to `src/data/business.ts`. Expert records and bios move to `src/data/experts.ts`. UI copy belongs in separate `src/i18n/en.ts`, `src/i18n/ja.ts` and `src/i18n/zh.ts` modules. Astro page templates only compose data and components.
+Company profile and verified global-structure facts move to `src/data/company.ts`. Six business records move to `src/data/business.ts`. Expert records and bios move to `src/data/experts.ts`. UI copy belongs in separate `src/i18n/en.ts` and `src/i18n/ja.ts` modules. Astro page templates only compose data and components.
 
 News uses Astro Content Collections. Each language variant is a separate Markdown item with title, slug, date, category, language, summary, image, featured and draft frontmatter. Only verified, sourced news is published; until supplied, the list provides non-factual structured placeholders marked as such.
 
@@ -86,13 +86,13 @@ Provides language-aware list, category filtering through query parameters, stati
 
 ### Contact
 
-Provides the company identity, verified email and address, map placeholder and non-submitting inquiry form UI. It does not imply that a message is sent until a form service is intentionally configured.
+Provides the company identity, clearly labelled contact placeholders unless authoritative contact data is explicitly supplied, map placeholder and non-submitting inquiry form UI. It does not imply that a message is sent until a form service is intentionally configured.
 
 ## Engineering and quality gates
 
 The site stays Astro + TypeScript + semantic HTML + native CSS + minimal native JavaScript. It does not add React, Vue, Tailwind, Bootstrap, a database or a traditional CMS. CSS uses design tokens for all brand colors, typography, spacing, container widths and breakpoints.
 
-Required launch gates are: one H1 per page; semantic landmarks; alt text; visible focus; keyboard-safe menu; full EN/JP/CN route equivalence; 1200px-class desktop layout, tablet and mobile reflow; WebP/AVIF-first images; meaningful lazy loading; per-page title, description, canonical and Open Graph metadata; sitemap and robots; no broken internal links; and a successful static build.
+Required launch gates are: one H1 per page; semantic landmarks; alt text; visible focus; keyboard-safe menu; full EN/JP route equivalence; 1200px-class desktop layout, tablet and mobile reflow; WebP/AVIF-first images; meaningful lazy loading; per-page title, description, canonical and Open Graph metadata; sitemap and robots; no broken internal links; and a successful static build.
 
 ## Delivery sequence
 
