@@ -4,7 +4,7 @@ type LocalizedText = Record<Lang, string>;
 type ContactPlaceholder = {
   label: LocalizedText;
   value: LocalizedText;
-  status: "placeholder";
+  status: "placeholder" | "verified";
 };
 
 export const companyProfile = {

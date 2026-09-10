@@ -56,3 +56,14 @@ test("foundation styling is tokenized and placeholder assets exist", () => {
   assert.match(tokens, /--csi-navy: #0b315e/);
   assert.equal(existsSync(file("public/images/home/hero-map-placeholder.svg")), true);
 });
+
+test("handoff documentation defines the V1 content boundaries", () => {
+  const agents = readFileSync(file("AGENTS.md"), "utf8");
+  const readme = readFileSync(file("README.md"), "utf8");
+  assert.match(agents, /Do not invent company facts/);
+  assert.match(agents, /English and Japanese only/);
+  assert.match(readme, /src\/data\/company\.ts/);
+  assert.match(readme, /\/en\//);
+  assert.match(readme, /\/ja\//);
+  assert.doesNotMatch(readme, /Languages:.*Chinese/);
+});

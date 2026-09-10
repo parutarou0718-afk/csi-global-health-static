@@ -1,68 +1,35 @@
-# CSI Global Health — Static Multilingual Website
+# CSI Global Health static site
 
-Initial engineering package based on the client-approved homepage direction.
+The Phase 1 foundation for the CSI Global Health public site. V1 exposes English at `/en/` and Japanese at `/ja/`; the root route redirects to `/en/`.
 
-## Stack
-- Astro (static output)
-- TypeScript
-- Plain CSS
-- GitHub source control
-- Designed for Cloudflare Pages deployment
-- Languages: Japanese `/ja/`, English `/en/`, Chinese `/zh/`
+## Local use
 
-## Included pages
-Home, About CSI, Corporate History, BNCT, AtherOx®, Scientific Advisors, Research & News, Contact — in all three languages.
-
-## Content basis
-1. `CSI_Global_Health_中文版公司介绍.pdf`
-   - company positioning
-   - Okayama University research base
-   - Japan/USA/global structure
-   - BNCT/DDS/Theranostics and other technology areas
-   - scientific advisors
-   - vision and core value
-2. `AtherOx Chicago 12-2025.pdf`
-   - AtherOx® / oxLDL-β2GPI technology
-   - research background
-   - clinical-study topics
-   - imaging/research applications
-
-The supplied PDFs are treated as the factual content basis. Japanese/English/Chinese website wording in this package is a first web-editing draft and should receive final client/compliance approval before production publication.
-
-## Important compliance treatment
-AtherOx® is presented as research/technology information in this first version. Diagnostic, treatment, product-registration, CE/GMP, performance or clinical-indication claims should be published only after the client confirms the current jurisdiction-specific authorization and approved labeling.
-
-## Local development
 ```bash
 npm install
 npm run dev
-```
-
-## Static production build
-```bash
 npm run build
 ```
-Output: `dist/`
 
-## GitHub + Cloudflare Pages
-1. Create a GitHub repository, e.g. `csi-global-health`.
-2. Push this folder to `main`.
-3. In Cloudflare Pages choose **Connect to Git**.
-4. Framework preset: **Astro**
-5. Build command: `npm run build`
-6. Build output directory: `dist`
-7. Deploy previews first; bind the production domain only after content/compliance sign-off.
+The static build is written to `dist/` and is suitable for Cloudflare Pages.
 
-## Current asset notes
-- CSI mark is cropped from the client-supplied logo image without redesigning the mark.
-- Okayama University logo is the client-supplied asset.
-- Advisor portraits are cropped from the client-supplied company profile PDF for prototype use.
-- `docs/reference/approved-homepage.png` contains the approved visual direction.
+## Source boundaries
 
-## Recommended next engineering pass
-- replace prototype logo crops with original transparent/vector files if available;
-- confirm final addresses/contact routes;
-- populate real Research & News content;
-- add metadata/OpenGraph/structured data;
-- implement sitemap/robots and privacy/contact handling;
-- run accessibility, responsive and performance QA.
+- `src/data/company.ts` — company identity and labelled contact placeholders.
+- `src/data/business.ts` — source-backed business-area records.
+- `src/data/experts.ts` — source-backed expert index records.
+- `src/i18n/en.ts` and `src/i18n/ja.ts` — public interface copy and navigation.
+- `src/lib/i18n.ts` — V1 EN/JP route helper; it is the extension point for an approved future language.
+- `src/components/` and `src/layouts/` — shared site shell and page primitives.
+- `src/styles/` — token, reset, layout, component and responsive CSS layers.
+- `public/images/` — labelled placeholders awaiting approved replacement artwork.
+
+## Content and asset replacement
+
+Do not replace contact placeholders with an email, phone number or address until the exact public value is supplied in an authoritative source file. Replace a placeholder image only with an approved, rights-cleared asset and preserve its folder purpose.
+
+## Verification
+
+```bash
+node --test tests/foundation.test.mjs
+npm run build
+```
