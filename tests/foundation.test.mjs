@@ -84,3 +84,13 @@ test("homepage preserves EN/JP-only and placeholder-contact boundaries", () => {
   assert.equal(existsSync(file("src/pages/zh/index.astro")), false);
   assert.match(readme, /global-network-map\.png/);
 });
+
+test("homepage data follows the Word structure without fabricated news", () => {
+  const home = readFileSync(file("src/data/home.ts"), "utf8");
+  const experts = readFileSync(file("src/data/experts.ts"), "utf8");
+  assert.match(home, /about:/);
+  assert.match(home, /news:/);
+  assert.match(home, /partnership:/);
+  assert.doesNotMatch(home, /globalStructure:/);
+  assert.match(experts, /institution:/);
+});
