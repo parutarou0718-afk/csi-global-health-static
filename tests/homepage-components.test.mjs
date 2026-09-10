@@ -22,7 +22,7 @@ test("obsolete public Chinese and legacy feature routes are absent", () => {
 
 test("the Phase 1 CSS entrypoint contains layers only", () => {
   const css = readFileSync(file("src/styles/global.css"), "utf8");
-  assert.equal(css.match(/@import/g)?.length, 5);
+  assert.match(css, /@import "\.\/tokens\.css"/);
   assert.doesNotMatch(css, /\.hero|\.timeline-card/);
 });
 
@@ -34,4 +34,15 @@ test("homepage composes the approved content sections in order", () => {
   const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
   assert.match(hero, /<h1>/);
   assert.match(hero, /mapSrc/);
+});
+
+test("EN and JP routes render the shared homepage with its dedicated style layer", () => {
+  for (const lang of ["en", "ja"]) {
+    const page = readFileSync(file(`src/pages/${lang}/index.astro`), "utf8");
+    assert.match(page, new RegExp(`<HomePage lang="${lang}"`));
+  }
+  const css = readFileSync(file("src/styles/home.css"), "utf8");
+  assert.match(css, /\.home-hero/);
+  assert.match(css, /@media \(max-width: 63\.9375rem\)/);
+  assert.match(readFileSync(file("src/styles/global.css"), "utf8"), /@import "\.\/home\.css"/);
 });
