@@ -1,0 +1,24 @@
+body {
+  min-width: 20rem;
+  background: var(--csi-bg);
+  color: var(--csi-text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.container {
+  width: min(var(--container-width), calc(100% - (var(--page-gutter) * 2)));
+  margin-inline: auto;
+}
+
+.section { padding-block: var(--space-10); }
+
+.page-placeholder {
+  min-height: calc(100vh - var(--space-10));
+  display: grid;
+  place-items: center;
+  background: var(--csi-bg-soft);
+}
+
+.page-placeholder__inner { max-width: 48rem; }

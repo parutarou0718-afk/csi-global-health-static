@@ -48,3 +48,11 @@ test("EN and JP expose only the approved six top-level routes", () => {
     }
   }
 });
+
+test("foundation styling is tokenized and placeholder assets exist", () => {
+  const globalCss = readFileSync(file("src/styles/global.css"), "utf8");
+  const tokens = readFileSync(file("src/styles/tokens.css"), "utf8");
+  assert.match(globalCss, /@import "\.\/tokens\.css"/);
+  assert.match(tokens, /--csi-navy: #0b315e/);
+  assert.equal(existsSync(file("public/images/home/hero-map-placeholder.svg")), true);
+});
