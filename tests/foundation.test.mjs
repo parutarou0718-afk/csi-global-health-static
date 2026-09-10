@@ -74,3 +74,13 @@ test("homepage content uses the supplied static network map and bilingual source
   assert.match(home, /export const homeContent/);
   assert.equal(existsSync(file("public/images/home/global-network-map.png")), true);
 });
+
+test("homepage preserves EN/JP-only and placeholder-contact boundaries", () => {
+  const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
+  const company = readFileSync(file("src/data/company.ts"), "utf8");
+  const readme = readFileSync(file("README.md"), "utf8");
+  assert.doesNotMatch(hero, /info@csi-globalhealth\.com/);
+  assert.match(company, /status: "placeholder"/);
+  assert.equal(existsSync(file("src/pages/zh/index.astro")), false);
+  assert.match(readme, /global-network-map\.png/);
+});
