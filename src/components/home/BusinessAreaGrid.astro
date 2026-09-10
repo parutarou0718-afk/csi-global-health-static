@@ -1,0 +1,22 @@
+---
+import { businessAreas } from "../../data/business";
+import type { Lang } from "../../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const heading = lang === "en" ? "Six Core Business Areas" : "6つのコア事業領域";
+---
+<section class="home-business section">
+  <div class="container">
+    <div class="section-heading"><p class="eyebrow">CSI Global Health</p><h2>{heading}</h2></div>
+    <div class="home-business__grid">
+      {businessAreas.map((area) => (
+        <article class="business-card">
+          <p>{area.number}</p>
+          <h3>{area.title[lang]}</h3>
+          <p>{area.summary[lang]}</p>
+          <a href={`/${lang}/business/#${area.id}`}>{lang === "en" ? "Explore" : "詳しく見る"}<span aria-hidden="true"> →</span></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

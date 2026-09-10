@@ -1,0 +1,23 @@
+---
+import { homeContent } from "../../data/home";
+import type { Lang } from "../../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const { hero } = homeContent[lang];
+---
+<section class="home-hero">
+  <div class="container home-hero__grid">
+    <div class="home-hero__copy">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.title}</h1>
+      <p>{hero.summary}</p>
+      <div class="home-hero__actions">
+        <a class="button button--primary" href={`/${lang}/about/`}>{hero.primaryLabel}<span aria-hidden="true">→</span></a>
+        <a class="button button--quiet" href={`/${lang}/business/`}>{hero.secondaryLabel}<span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <figure class="home-hero__map">
+      <img src={hero.mapSrc} alt={hero.mapAlt} width="1920" height="820" fetchpriority="high" />
+    </figure>
+  </div>
+</section>

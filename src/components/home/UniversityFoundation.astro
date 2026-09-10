@@ -1,0 +1,27 @@
+---
+import { homeContent } from "../../data/home";
+import type { Lang } from "../../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const { foundation } = homeContent[lang];
+---
+<section class="home-foundation section">
+  <div class="container home-foundation__panel">
+    <div class="home-foundation__identity">
+      <img src="/assets/okayama-university.svg" alt="Okayama University" />
+    </div>
+    <div class="home-foundation__copy">
+      <h2>{foundation.title}</h2>
+      <p>{foundation.body}</p>
+    </div>
+    <div class="home-foundation__pillars">
+      {foundation.pillars.map((pillar) => (
+        <article>
+          <span aria-hidden="true">◌</span>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.label}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

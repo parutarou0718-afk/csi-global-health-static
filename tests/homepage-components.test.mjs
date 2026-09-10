@@ -25,3 +25,13 @@ test("the Phase 1 CSS entrypoint contains layers only", () => {
   assert.equal(css.match(/@import/g)?.length, 5);
   assert.doesNotMatch(css, /\.hero|\.timeline-card/);
 });
+
+test("homepage composes the approved content sections in order", () => {
+  const home = readFileSync(file("src/components/HomePage.astro"), "utf8");
+  for (const component of ["HomeHero", "UniversityFoundation", "BusinessAreaGrid", "ExpertNetwork", "GlobalStructure", "ResearchNewsLinks", "SiteCta"]) {
+    assert.match(home, new RegExp(`<${component} lang=\\{lang\\}`));
+  }
+  const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
+  assert.match(hero, /<h1>/);
+  assert.match(hero, /mapSrc/);
+});
