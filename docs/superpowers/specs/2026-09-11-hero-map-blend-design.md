@@ -11,14 +11,15 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - Replace the two-column Hero layout with a single, full-width Hero canvas.
 - Display the complete map at its native aspect ratio on the right; do not crop it with a fixed-height image box.
 - Keep Hero copy on an opaque white left-side field.
-- Use a long, multi-stop white-to-transparent fade between the content field and the complete map, so the copy does not visually sit on top of map details.
+- Start the map layer to the right of the copy field, so no map pixels sit beneath the copy.
+- Use a white-to-pale-blue empty transition between the content field and the complete map.
 - Keep all text and actions above the map fade.
 - At tablet and mobile widths, reduce the map's visual prominence and place it below the copy rather than allowing it to overlap or reduce text readability.
 
 ## Acceptance criteria
 
 - The complete map is visible at desktop width without cropped continents.
-- Hero copy remains on a visually white background and does not overlap visible map details.
+- Hero copy remains on a white background and does not overlap the map layer.
 - Hero copy remains readable over a stable pale blue background.
 - The image remains loaded from `/images/home/global-network-map.png`.
 - EN and JP use the same responsive component and styling.

@@ -4,7 +4,7 @@
 
 **Goal:** Blend the supplied global network map into the homepage Hero background while preserving its accessibility and responsive readability.
 
-**Architecture:** `HomeHero.astro` keeps the map as an image but gives it a dedicated background-art layer. `home.css` displays the complete, aspect-ratio-preserved image on the right and overlays a long white-to-transparent transition between it and the opaque white content field; at smaller widths the map returns to normal flow.
+**Architecture:** `HomeHero.astro` keeps the map as an image but gives it a dedicated background-art layer. `home.css` positions the complete, aspect-ratio-preserved image entirely to the right of the opaque white content field, with an empty white-to-pale-blue transition between them; at smaller widths the map returns to normal flow.
 
 **Tech Stack:** Astro, TypeScript, native CSS, Node test runner.
 

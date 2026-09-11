@@ -41,7 +41,8 @@ test("hero map is rendered as a blendable background-art layer", () => {
   assert.match(hero, /class="home-hero__fade"/);
   assert.match(css, /\.home-hero__art \{ position: absolute;/);
   assert.match(css, /\.home-hero__fade \{ position: absolute;/);
-  assert.match(css, /width: min\(74%, 76rem\)/);
+  assert.match(css, /left: 50%/);
+  assert.match(css, /width: 50%/);
   assert.match(css, /height: auto/);
   assert.match(css, /mix-blend-mode: normal/);
 });

@@ -9,9 +9,9 @@
 .button--primary:hover { background: var(--csi-red-dark); }
 .button--quiet { border-color: var(--csi-navy); color: var(--csi-navy); }
 .button--quiet:hover { background: var(--csi-navy); color: var(--csi-white); }
-.home-hero__art { position: absolute; z-index: 0; top: 50%; right: 0; width: min(74%, 76rem); height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
+.home-hero__art { position: absolute; z-index: 0; top: 50%; left: 50%; width: 50%; height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
 .home-hero__art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: normal; }
-.home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 32%, color-mix(in srgb, var(--csi-white), transparent 4%) 43%, color-mix(in srgb, var(--csi-white), transparent 20%) 53%, color-mix(in srgb, var(--csi-white), transparent 58%) 66%, transparent 80%); }
+.home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 35%, color-mix(in srgb, var(--csi-white), var(--csi-bg-soft) 16%) 44%, color-mix(in srgb, var(--csi-white), transparent 30%) 53%, transparent 62%); }
 
 .section-heading { display: grid; justify-items: center; max-width: 48rem; margin: 0 auto var(--space-6); text-align: center; }
 .section-heading h2, .home-about h2, .home-partnership h2 { color: var(--csi-navy); font-size: var(--font-size-xl); line-height: var(--line-height-tight); }
