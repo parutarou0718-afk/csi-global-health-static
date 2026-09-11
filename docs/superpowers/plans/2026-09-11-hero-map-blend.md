@@ -4,7 +4,7 @@
 
 **Goal:** Blend the supplied global network map into the homepage Hero background while preserving its accessibility and responsive readability.
 
-**Architecture:** `HomeHero.astro` keeps the map as an image but gives it a dedicated background-art layer. `home.css` changes the desktop Hero to a relative canvas, limits the art to 55% of the right side, overlays a multi-stop fade over its left edge, and reverts to a normal low-prominence stacked image at smaller widths.
+**Architecture:** `HomeHero.astro` keeps the map as an image but gives it a dedicated background-art layer. `home.css` displays the complete, aspect-ratio-preserved image on the right and overlays a long white-to-transparent transition between it and the opaque white content field; at smaller widths the map returns to normal flow.
 
 **Tech Stack:** Astro, TypeScript, native CSS, Node test runner.
 
