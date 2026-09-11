@@ -9,9 +9,9 @@
 .button--primary:hover { background: var(--csi-red-dark); }
 .button--quiet { border-color: var(--csi-navy); color: var(--csi-navy); }
 .button--quiet:hover { background: var(--csi-navy); color: var(--csi-white); }
-.home-hero__art { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; width: min(72%, 76rem); margin: 0; opacity: 0.9; pointer-events: none; }
+.home-hero__art { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; width: min(55%, 62rem); margin: 0; opacity: 0.65; pointer-events: none; }
 .home-hero__art img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: multiply; }
-.home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 29%, color-mix(in srgb, var(--csi-bg-soft), transparent 16%) 43%, transparent 68%); }
+.home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 18%, color-mix(in srgb, var(--csi-white), transparent 5%) 33%, color-mix(in srgb, var(--csi-bg-soft), transparent 20%) 49%, color-mix(in srgb, var(--csi-blue-light), transparent 62%) 68%, transparent 84%); }
 
 .section-heading { display: grid; justify-items: center; max-width: 48rem; margin: 0 auto var(--space-6); text-align: center; }
 .section-heading h2, .home-about h2, .home-partnership h2 { color: var(--csi-navy); font-size: var(--font-size-xl); line-height: var(--line-height-tight); }
