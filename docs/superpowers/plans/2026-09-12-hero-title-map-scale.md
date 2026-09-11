@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Keep the English Hero heading within five desktop lines and make the complete global map visually fill most of the compact Hero.
+**Goal:** Keep the English Hero heading to four desktop lines, its summary to two or three lines, and make the complete global map visually fill most of the compact Hero.
 
 **Architecture:** Adjust only desktop Hero layout tokens in `src/styles/home.css` and `src/styles/tokens.css`. The map asset, component markup, copy and mobile/tablet fallback remain unchanged.
 
@@ -31,7 +31,7 @@
 
 - [x] **Step 1: Write the failing layout assertions**
 
-Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `40%` map offset, a `60%` map width and the dedicated Hero font token.
+Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `40%` map offset, a `60%` map width, a `30rem` copy width, a `24rem` title width and the dedicated Hero font token.
 
 - [x] **Step 2: Run the focused test to verify it fails**
 
@@ -41,7 +41,7 @@ Expected: FAIL because the existing desktop map split is `32%` and `68%`.
 
 - [x] **Step 3: Implement the smallest desktop-only style update**
 
-Keep the dedicated Hero font scale at `clamp(1.875rem, 2.75vw, 2.5rem)`. Update only desktop Hero minimum heights and vertical padding to the asserted compact values; leave the existing responsive media queries intact.
+Set a slightly smaller dedicated Hero title scale and independently widen the copy, title and summary line lengths into the map's pale transition area. Leave the existing responsive media queries intact.
 
 - [x] **Step 4: Run the full verification**
 

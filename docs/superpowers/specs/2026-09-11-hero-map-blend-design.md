@@ -17,6 +17,7 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - Use the added white canvas margin and a background-only edge feather to remove the rectangular image edge around the supplied pale-blue background. The feather must never reduce the opacity or contrast of high-saturation blue continent pixels.
 - Keep the desktop Hero vertically compact enough that the complete map occupies most of its available height, without stretching or cropping the artwork.
 - At desktop width, set the English Hero title to no more than five lines without letting it overlap the map artwork.
+- At desktop width, set the English Hero title to four lines and its summary to two or three lines. The copy may extend into the map's pale transition background, but must not cover blue continent artwork.
 - Increase the desktop map layer's usable height relative to the Hero while retaining the complete map and the white copy field.
 - Keep all text and actions above the map fade.
 - At tablet and mobile widths, reduce the map's visual prominence and place it below the copy rather than allowing it to overlap or reduce text readability.
@@ -29,6 +30,7 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - The committed map asset is an original-source derivative with white outer margins; no blue continent pixels are faded to produce those margins.
 - Hero copy remains readable over a stable pale blue background.
 - The English desktop Hero title wraps to four or five lines, never six or more.
+- The English desktop Hero title wraps to four lines and the summary to two or three lines.
 - The visible map artwork occupies at least two thirds of the compact desktop Hero height.
 - The image remains loaded from `/images/home/global-network-map.png`.
 - EN and JP use the same responsive component and styling.

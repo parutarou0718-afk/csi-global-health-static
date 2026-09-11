@@ -18,7 +18,7 @@
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.5rem;
   --font-size-2xl: clamp(2rem, 4vw, 3.25rem);
-  --font-size-hero: clamp(1.875rem, 2.75vw, 2.5rem);
+  --font-size-hero: clamp(1.625rem, 2.35vw, 2.125rem);
   --line-height-tight: 1.2;
   --line-height-base: 1.6;
   --space-1: 0.25rem;
