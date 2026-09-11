@@ -11,7 +11,7 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - Replace the two-column Hero layout with a single, full-width Hero canvas.
 - Display the complete map at its native aspect ratio on the right; do not crop it with a fixed-height image box.
 - Keep Hero copy on an opaque white left-side field.
-- Start the map layer to the right of the copy field, so no map pixels sit beneath the copy.
+- Use an approximately 42/58 desktop split: a constrained left copy field and a larger right map layer, with no map pixels beneath the copy.
 - Use a white-to-pale-blue empty transition between the content field and the complete map.
 - Keep all text and actions above the map fade.
 - At tablet and mobile widths, reduce the map's visual prominence and place it below the copy rather than allowing it to overlap or reduce text readability.

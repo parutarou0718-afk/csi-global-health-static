@@ -1,7 +1,7 @@
 .home-hero { position: relative; isolation: isolate; min-height: 32rem; overflow: hidden; padding-block: var(--space-8) var(--space-10); background: var(--csi-white); }
 .home-hero__grid { position: relative; z-index: 2; display: grid; align-items: center; min-height: 26rem; }
-.home-hero__copy { position: relative; z-index: 1; max-width: 36rem; }
-.home-hero__copy h1 { max-width: 34rem; color: var(--csi-navy); font-size: var(--font-size-2xl); line-height: var(--line-height-tight); }
+.home-hero__copy { position: relative; z-index: 1; max-width: 25rem; }
+.home-hero__copy h1 { max-width: 25rem; color: var(--csi-navy); font-size: var(--font-size-2xl); line-height: var(--line-height-tight); }
 .home-hero__copy > p:not(.eyebrow) { margin-top: var(--space-5); color: var(--csi-text-muted); font-size: var(--font-size-lg); }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 2.75rem; padding: var(--space-3) var(--space-5); border: var(--border-width) solid transparent; border-radius: var(--radius-sm); font-size: var(--font-size-sm); font-weight: 700; transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base); }
@@ -9,7 +9,7 @@
 .button--primary:hover { background: var(--csi-red-dark); }
 .button--quiet { border-color: var(--csi-navy); color: var(--csi-navy); }
 .button--quiet:hover { background: var(--csi-navy); color: var(--csi-white); }
-.home-hero__art { position: absolute; z-index: 0; top: 50%; left: 50%; width: 50%; height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
+.home-hero__art { position: absolute; z-index: 0; top: 50%; left: 42%; width: 58%; height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
 .home-hero__art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: normal; }
 .home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 35%, color-mix(in srgb, var(--csi-white), var(--csi-bg-soft) 16%) 44%, color-mix(in srgb, var(--csi-white), transparent 30%) 53%, transparent 62%); }
 
