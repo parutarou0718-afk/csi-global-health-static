@@ -27,6 +27,8 @@ The static build is written to `dist/` and is suitable for Cloudflare Pages.
 
 Do not replace contact placeholders with an email, phone number or address until the exact public value is supplied in an authoritative source file. Replace a placeholder image only with an approved, rights-cleared asset and preserve its folder purpose. The homepage map may be replaced only with a newly approved Hero network image at `public/images/home/global-network-map.png`.
 
+For homepage information architecture, `网站详细结构.docx` is the authoritative source. Visual reference images establish visual direction only; they do not override the approved homepage section sequence.
+
 ## Verification
 
 ```bash

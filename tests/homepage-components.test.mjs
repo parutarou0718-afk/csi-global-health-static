@@ -26,14 +26,12 @@ test("the Phase 1 CSS entrypoint contains layers only", () => {
   assert.doesNotMatch(css, /\.hero|\.timeline-card/);
 });
 
-test("homepage composes the approved content sections in order", () => {
+test("homepage uses the Word-required six-section sequence", () => {
   const home = readFileSync(file("src/components/HomePage.astro"), "utf8");
-  for (const component of ["HomeHero", "UniversityFoundation", "BusinessAreaGrid", "ExpertNetwork", "GlobalStructure", "ResearchNewsLinks", "SiteCta"]) {
+  for (const component of ["HomeHero", "AboutCsi", "BusinessAreaGrid", "ExpertNetwork", "NewsPreview", "PartnershipCta"]) {
     assert.match(home, new RegExp(`<${component} lang=\\{lang\\}`));
   }
-  const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
-  assert.match(hero, /<h1>/);
-  assert.match(hero, /mapSrc/);
+  assert.doesNotMatch(home, /GlobalStructure|UniversityFoundation|ResearchNewsLinks/);
 });
 
 test("EN and JP routes render the shared homepage with its dedicated style layer", () => {

@@ -94,3 +94,8 @@ test("homepage data follows the Word structure without fabricated news", () => {
   assert.doesNotMatch(home, /globalStructure:/);
   assert.match(experts, /institution:/);
 });
+
+test("README identifies the Word document as the homepage structure authority", () => {
+  const readme = readFileSync(file("README.md"), "utf8");
+  assert.match(readme, /网站详细结构\.docx/);
+});

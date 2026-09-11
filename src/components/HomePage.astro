@@ -1,19 +1,17 @@
 ---
 import type { Lang } from "../lib/i18n";
 import HomeHero from "./home/HomeHero.astro";
-import UniversityFoundation from "./home/UniversityFoundation.astro";
+import AboutCsi from "./home/AboutCsi.astro";
 import BusinessAreaGrid from "./home/BusinessAreaGrid.astro";
 import ExpertNetwork from "./home/ExpertNetwork.astro";
-import GlobalStructure from "./home/GlobalStructure.astro";
-import ResearchNewsLinks from "./home/ResearchNewsLinks.astro";
-import SiteCta from "./home/SiteCta.astro";
+import NewsPreview from "./home/NewsPreview.astro";
+import PartnershipCta from "./home/PartnershipCta.astro";
 
 const { lang } = Astro.props as { lang: Lang };
 ---
 <HomeHero lang={lang} />
-<UniversityFoundation lang={lang} />
+<AboutCsi lang={lang} />
 <BusinessAreaGrid lang={lang} />
 <ExpertNetwork lang={lang} />
-<GlobalStructure lang={lang} />
-<ResearchNewsLinks lang={lang} />
-<SiteCta lang={lang} />
+<NewsPreview lang={lang} />
+<PartnershipCta lang={lang} />

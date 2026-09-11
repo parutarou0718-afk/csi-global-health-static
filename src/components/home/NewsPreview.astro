@@ -1,0 +1,19 @@
+---
+import { homeContent } from "../../data/home";
+import type { Lang } from "../../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const { news } = homeContent[lang];
+---
+<section class="home-news section">
+  <div class="container">
+    <div class="section-heading"><p class="eyebrow">CSI Global Health</p><h2>{news.title}</h2></div>
+    <div class="home-news__empty">
+      <div>
+        <h3>{news.emptyTitle}</h3>
+        <p>{news.emptyBody}</p>
+      </div>
+      <a class="button button--quiet" href={`/${lang}/news/`}>{news.linkLabel}<span aria-hidden="true"> →</span></a>
+    </div>
+  </div>
+</section>
