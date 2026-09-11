@@ -34,16 +34,17 @@ test("homepage uses the Word-required six-section sequence", () => {
   assert.doesNotMatch(home, /GlobalStructure|UniversityFoundation|ResearchNewsLinks/);
 });
 
-test("hero map is rendered as a blendable background-art layer", () => {
+test("hero map uses its own pale edge without fading blue map features", () => {
   const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
   const css = readFileSync(file("src/styles/home.css"), "utf8");
   assert.match(hero, /class="home-hero__art"/);
-  assert.match(hero, /class="home-hero__fade"/);
+  assert.doesNotMatch(hero, /home-hero__fade/);
   assert.match(css, /\.home-hero__art \{ position: absolute;/);
-  assert.match(css, /\.home-hero__fade \{ position: absolute;/);
-  assert.match(css, /left: 42%/);
-  assert.match(css, /width: 58%/);
+  assert.doesNotMatch(css, /\.home-hero__fade/);
+  assert.match(css, /left: 36%/);
+  assert.match(css, /width: 64%/);
   assert.match(css, /max-width: 25rem/);
+  assert.match(css, /font-size: var\(--font-size-hero\)/);
   assert.match(css, /height: auto/);
   assert.match(css, /mix-blend-mode: normal/);
 });
