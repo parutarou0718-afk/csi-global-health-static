@@ -13,8 +13,8 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - Keep Hero copy on an opaque white left-side field.
 - Use an approximately 36/64 desktop split: a constrained left copy field and a larger right map layer, with no blue map features beneath the copy.
 - Do not apply a CSS fade or opacity mask over the map. The transition must use only the supplied image's pale blue edge background, so blue continents retain their original contrast.
-- Build the delivered Hero image from the supplied map by placing its untouched pixels on a larger white canvas. Do not generate, redraw, crop or recolor the continents, labels, network lines or Japan highlight.
-- Use the added white canvas margin to remove the rectangular image edge around the supplied pale-blue background.
+- Build the delivered Hero image from the supplied map on a larger white canvas. Do not generate, redraw, crop or recolor the continents, labels, network lines or Japan highlight.
+- Use the added white canvas margin and a background-only edge feather to remove the rectangular image edge around the supplied pale-blue background. The feather must never reduce the opacity or contrast of high-saturation blue continent pixels.
 - Keep the desktop Hero vertically compact enough that the complete map occupies most of its available height, without stretching or cropping the artwork.
 - Keep all text and actions above the map fade.
 - At tablet and mobile widths, reduce the map's visual prominence and place it below the copy rather than allowing it to overlap or reduce text readability.

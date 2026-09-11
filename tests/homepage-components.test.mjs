@@ -38,6 +38,7 @@ test("hero map uses its own pale edge without fading blue map features", () => {
   const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
   const css = readFileSync(file("src/styles/home.css"), "utf8");
   assert.match(hero, /class="home-hero__art"/);
+  assert.match(hero, /width="2240" height="1060"/);
   assert.doesNotMatch(hero, /home-hero__fade/);
   assert.match(css, /\.home-hero__art \{ position: absolute;/);
   assert.doesNotMatch(css, /\.home-hero__fade/);
