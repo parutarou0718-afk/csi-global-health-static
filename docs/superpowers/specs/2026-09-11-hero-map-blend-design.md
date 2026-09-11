@@ -11,7 +11,7 @@ Make the supplied global network map feel integrated into the homepage Hero, fol
 - Replace the two-column Hero layout with a single, full-width Hero canvas.
 - Display the complete map at its native aspect ratio on the right; do not crop it with a fixed-height image box.
 - Keep Hero copy on an opaque white left-side field.
-- Use an approximately 36/64 desktop split: a constrained left copy field and a larger right map layer, with no blue map features beneath the copy.
+- Use a 40/60 desktop split: a left copy field occupying 40% of the Hero and a right map layer occupying 60%, with no blue map features beneath the copy.
 - Do not apply a CSS fade or opacity mask over the map. The transition must use only the supplied image's pale blue edge background, so blue continents retain their original contrast.
 - Build the delivered Hero image from the supplied map on a larger white canvas. Do not generate, redraw, crop or recolor the continents, labels, network lines or Japan highlight.
 - Use the added white canvas margin and a background-only edge feather to remove the rectangular image edge around the supplied pale-blue background. The feather must never reduce the opacity or contrast of high-saturation blue continent pixels.

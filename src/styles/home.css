@@ -9,7 +9,7 @@
 .button--primary:hover { background: var(--csi-red-dark); }
 .button--quiet { border-color: var(--csi-navy); color: var(--csi-navy); }
 .button--quiet:hover { background: var(--csi-navy); color: var(--csi-white); }
-.home-hero__art { position: absolute; z-index: 0; top: 50%; left: 32%; width: 68%; height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
+.home-hero__art { position: absolute; z-index: 0; top: 50%; left: 40%; width: 60%; height: auto; margin: 0; transform: translateY(-50%); pointer-events: none; }
 .home-hero__art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: normal; }
 
 .section-heading { display: grid; justify-items: center; max-width: 48rem; margin: 0 auto var(--space-6); text-align: center; }

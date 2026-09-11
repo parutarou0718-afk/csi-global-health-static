@@ -44,8 +44,8 @@ test("hero map uses its own pale edge without fading blue map features", () => {
   assert.doesNotMatch(css, /\.home-hero__fade/);
   assert.match(css, /min-height: 25rem/);
   assert.match(css, /min-height: 18rem/);
-  assert.match(css, /left: 32%/);
-  assert.match(css, /width: 68%/);
+  assert.match(css, /left: 40%/);
+  assert.match(css, /width: 60%/);
   assert.match(css, /max-width: 25rem/);
   assert.match(css, /font-size: var\(--font-size-hero\)/);
   assert.match(css, /height: auto/);

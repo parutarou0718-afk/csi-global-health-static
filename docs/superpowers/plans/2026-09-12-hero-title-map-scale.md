@@ -31,13 +31,13 @@
 
 - [x] **Step 1: Write the failing layout assertions**
 
-Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `32%` map offset, a `68%` map width and the dedicated Hero font token.
+Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `40%` map offset, a `60%` map width and the dedicated Hero font token.
 
 - [x] **Step 2: Run the focused test to verify it fails**
 
 Run: `node --test tests/homepage-components.test.mjs`
 
-Expected: FAIL because the existing desktop values are `28rem` and `22rem`.
+Expected: FAIL because the existing desktop map split is `32%` and `68%`.
 
 - [x] **Step 3: Implement the smallest desktop-only style update**
 
