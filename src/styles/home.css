@@ -1,5 +1,5 @@
-.home-hero { overflow: hidden; padding-block: var(--space-8) var(--space-10); background: linear-gradient(135deg, var(--csi-white), var(--csi-blue-light)); }
-.home-hero__grid { display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.35fr); align-items: center; gap: var(--space-6); }
+.home-hero { position: relative; isolation: isolate; min-height: 32rem; overflow: hidden; padding-block: var(--space-8) var(--space-10); background: linear-gradient(110deg, var(--csi-white) 0%, var(--csi-bg-soft) 56%, var(--csi-blue-light) 100%); }
+.home-hero__grid { position: relative; z-index: 2; display: grid; align-items: center; min-height: 26rem; }
 .home-hero__copy { position: relative; z-index: 1; max-width: 36rem; }
 .home-hero__copy h1 { max-width: 34rem; color: var(--csi-navy); font-size: var(--font-size-2xl); line-height: var(--line-height-tight); }
 .home-hero__copy > p:not(.eyebrow) { margin-top: var(--space-5); color: var(--csi-text-muted); font-size: var(--font-size-lg); }
@@ -9,8 +9,9 @@
 .button--primary:hover { background: var(--csi-red-dark); }
 .button--quiet { border-color: var(--csi-navy); color: var(--csi-navy); }
 .button--quiet:hover { background: var(--csi-navy); color: var(--csi-white); }
-.home-hero__map { margin: 0; }
-.home-hero__map img { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(var(--shadow-soft)); }
+.home-hero__art { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; width: min(72%, 76rem); margin: 0; opacity: 0.9; pointer-events: none; }
+.home-hero__art img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: multiply; }
+.home-hero__fade { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--csi-white) 0%, var(--csi-white) 29%, color-mix(in srgb, var(--csi-bg-soft), transparent 16%) 43%, transparent 68%); }
 
 .section-heading { display: grid; justify-items: center; max-width: 48rem; margin: 0 auto var(--space-6); text-align: center; }
 .section-heading h2, .home-about h2, .home-partnership h2 { color: var(--csi-navy); font-size: var(--font-size-xl); line-height: var(--line-height-tight); }
@@ -52,8 +53,12 @@
 .home-partnership .button { margin-top: var(--space-6); }
 
 @media (max-width: 63.9375rem) {
-  .home-hero__grid { grid-template-columns: 1fr; }
+  .home-hero { min-height: auto; }
+  .home-hero__grid { min-height: auto; }
   .home-hero__copy { max-width: 42rem; }
+  .home-hero__art { position: relative; inset: auto; display: block; width: min(100% - (var(--space-5) * 2), 48rem); height: auto; margin: var(--space-5) auto 0; opacity: 0.7; }
+  .home-hero__art img { height: auto; object-fit: contain; mix-blend-mode: multiply; }
+  .home-hero__fade { display: none; }
   .home-business__grid { grid-template-columns: repeat(3, 1fr); }
   .home-experts__grid { grid-template-columns: repeat(2, 1fr); }
 }

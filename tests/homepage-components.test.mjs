@@ -34,6 +34,15 @@ test("homepage uses the Word-required six-section sequence", () => {
   assert.doesNotMatch(home, /GlobalStructure|UniversityFoundation|ResearchNewsLinks/);
 });
 
+test("hero map is rendered as a blendable background-art layer", () => {
+  const hero = readFileSync(file("src/components/home/HomeHero.astro"), "utf8");
+  const css = readFileSync(file("src/styles/home.css"), "utf8");
+  assert.match(hero, /class="home-hero__art"/);
+  assert.match(hero, /class="home-hero__fade"/);
+  assert.match(css, /\.home-hero__art \{ position: absolute;/);
+  assert.match(css, /\.home-hero__fade \{ position: absolute;/);
+});
+
 test("EN and JP routes render the shared homepage with its dedicated style layer", () => {
   for (const lang of ["en", "ja"]) {
     const page = readFileSync(file(`src/pages/${lang}/index.astro`), "utf8");

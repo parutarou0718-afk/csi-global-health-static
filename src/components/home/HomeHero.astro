@@ -16,8 +16,9 @@ const { hero } = homeContent[lang];
         <a class="button button--quiet" href={`/${lang}/contact/`}>{hero.secondaryLabel}<span aria-hidden="true"> →</span></a>
       </div>
     </div>
-    <figure class="home-hero__map">
-      <img src={hero.mapSrc} alt={hero.mapAlt} width="1920" height="820" fetchpriority="high" />
-    </figure>
   </div>
+  <figure class="home-hero__art">
+    <img src={hero.mapSrc} alt={hero.mapAlt} width="1920" height="820" fetchpriority="high" />
+  </figure>
+  <div class="home-hero__fade" aria-hidden="true"></div>
 </section>
