@@ -1,0 +1,42 @@
+---
+import { newsItems } from "../data/news";
+import { newsPage as enNews } from "../i18n/en";
+import { newsPage as jaNews } from "../i18n/ja";
+import type { Lang } from "../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const copy = lang === "en" ? enNews : jaNews;
+const featured = newsItems[0];
+---
+
+<section class="news-hero section">
+  <div class="container">
+    <p class="eyebrow">{copy.hero.eyebrow}</p>
+    <h1>{copy.hero.title}</h1>
+  </div>
+</section>
+
+<section class="news-featured-section section">
+  <div class="container">
+    {featured && <a class="news-featured" href={`/${lang}/news/${featured.slug}/`}>
+      <img src={featured.image} alt="" />
+      <div class="news-featured__content">
+        <h3>{featured.title[lang]}</h3>
+        <p>{featured.summary[lang]}</p>
+      </div>
+    </a>}
+  </div>
+</section>
+
+<section class="news-latest section">
+  <div class="container">
+    <p class="eyebrow">{copy.latest.eyebrow}</p>
+    <h2>{copy.latest.title}</h2>
+    {newsItems.length > 0 ? <div class="news-grid">
+      {newsItems.map((item) => <a class="news-card" href={`/${lang}/news/${item.slug}/`}>
+        <img src={item.image} alt="" loading="lazy" />
+        <div><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p></div>
+      </a>)}
+    </div> : <p class="news-latest__empty">{copy.latest.empty}</p>}
+  </div>
+</section>

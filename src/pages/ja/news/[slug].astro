@@ -1,0 +1,15 @@
+---
+import NewsArticlePage from "../../../components/NewsArticlePage.astro";
+import { newsItems } from "../../../data/news";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return newsItems.map((item) => ({ params: { slug: item.slug } }));
+}
+
+const item = newsItems.find((entry) => entry.slug === Astro.params.slug);
+if (!item) throw new Error("Unknown news item");
+---
+<BaseLayout lang="ja" title={`${item.title.ja} | CSI Global Health`} description={item.summary.ja}>
+  <NewsArticlePage lang="ja" item={item} />
+</BaseLayout>

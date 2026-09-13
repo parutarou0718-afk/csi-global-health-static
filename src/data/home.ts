@@ -1,7 +1,7 @@
 import type { Lang } from "../lib/i18n";
 
 type HomeCopy = {
-  hero: { eyebrow: string; title: string; summary: string; primaryLabel: string; secondaryLabel: string; mapAlt: string; mapSrc: string };
+  hero: { eyebrow: string; title: string; titleLines?: readonly string[]; summary: string; primaryLabel: string; secondaryLabel: string; mapAlt: string; mapSrc: string };
   about: { title: string; body: string; linkLabel: string };
   expertHeading: string;
   news: { title: string; emptyTitle: string; emptyBody: string; linkLabel: string };
@@ -13,6 +13,7 @@ export const homeContent: Record<Lang, HomeCopy> = {
     hero: {
       eyebrow: "CSI Global Health, Co., Ltd.",
       title: "From Science to Medicine. From Innovation to Patients. From Japan to the World.",
+      titleLines: ["From Science to Medicine.", "From Innovation to", "Patients. From Japan to", "the World."],
       summary: "CSI Global Health connects university research foundations, clinical translation and international medical-technology collaboration.",
       primaryLabel: "Learn about CSI",
       secondaryLabel: "Contact us",

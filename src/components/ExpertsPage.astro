@@ -1,0 +1,74 @@
+---
+import { expertPlacement, experts } from "../data/experts";
+import { expertsPage as enExperts } from "../i18n/en";
+import { expertsPage as jaExperts } from "../i18n/ja";
+import type { Lang } from "../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const copy = lang === "en" ? enExperts : jaExperts;
+const founder = experts.filter((expert) => expertPlacement[expert.slug] === "founder");
+const network = experts.filter((expert) => expertPlacement[expert.slug] === "network");
+const expertiseIcons = [
+  "/images/experts/icons/particle-medicine.png",
+  "/images/experts/icons/theranostics.png",
+  "/images/experts/icons/molecular-imaging.png",
+  "/images/experts/icons/global-network.png",
+];
+---
+
+<section class="experts-hero">
+  <img class="experts-hero__image" src="/images/experts/hero-global-research.png" alt="" aria-hidden="true" />
+  <div class="container experts-hero__inner">
+    <div>
+      <p class="eyebrow">{copy.hero.eyebrow}</p>
+      <h1>{copy.hero.title}</h1>
+      <p class="experts-hero__headline">{copy.hero.headline}</p>
+      <p>{copy.hero.description}</p>
+    </div>
+  </div>
+</section>
+
+<section class="experts-founder section">
+  <div class="container">
+    <p class="eyebrow">{copy.founder.label}</p>
+    <h2>{copy.founder.title}</h2>
+    {founder.map((expert) => <article class="experts-founder__card">
+      <img src={expert.portrait} alt={expert.name} />
+      <div>
+        <h3>{expert.name}</h3>
+        {expert.role && <p class="experts-founder__role">{expert.role[lang]}</p>}
+        <p class="experts-founder__institution">{expert.institution[lang]}</p>
+        <p>{expert.biography[lang]}</p>
+      </div>
+    </article>)}
+  </div>
+</section>
+
+<section class="experts-network section" id="scientific-network">
+  <div class="container">
+    <div class="experts-section-heading">
+      <div><p class="eyebrow">{copy.network.label}</p><h2>{copy.network.title}</h2></div>
+      <p>{copy.network.description}</p>
+    </div>
+    <div class="experts-network__grid">
+      {network.map((expert) => <article class="experts-network__card">
+        <img src={expert.portrait} alt={expert.name} loading="lazy" />
+        <div><h3>{expert.name}</h3>{expert.role && <p class="experts-network__role">{expert.role[lang]}</p>}<p class="experts-network__institution">{expert.institution[lang]}</p><p>{expert.biography[lang]}</p></div>
+      </article>)}
+    </div>
+  </div>
+</section>
+
+<section class="experts-expertise section">
+  <div class="container">
+    <p class="eyebrow">{copy.expertise.label}</p><h2>{copy.expertise.title}</h2>
+    <div class="experts-expertise__grid">{copy.expertise.items.map(([title, description], index) => <article><img src={expertiseIcons[index]} alt="" /><div><h3>{title}</h3><p>{description}</p></div></article>)}</div>
+  </div>
+</section>
+
+<section class="experts-collaboration section">
+  <img class="experts-collaboration__image" src="/images/experts/collaboration-lab.png" alt="" aria-hidden="true" loading="lazy" />
+  <div class="container experts-collaboration__inner"><div><p class="eyebrow">{copy.collaboration.label}</p><h2>{copy.collaboration.title}</h2><p>{copy.collaboration.description}</p></div></div>
+</section>
+
+<section class="experts-cta section"><div class="container experts-cta__inner"><a class="button button--primary" href={`/${lang}/business/`}>{copy.cta.business} <span aria-hidden="true">→</span></a><a class="button button--secondary" href={`/${lang}/contact/`}>{copy.cta.contact} <span aria-hidden="true">→</span></a></div></section>

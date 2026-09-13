@@ -11,7 +11,7 @@ const heading = lang === "en" ? "Six Core Business Areas" : "6つのコア事業
     <div class="home-business__grid">
       {businessAreas.map((area) => (
         <article class="business-card">
-          <p>{area.number}</p>
+          <img class="business-card__icon" src={area.icon} alt={area.title[lang]} width="72" height="72" loading="lazy" />
           <h3>{area.title[lang]}</h3>
           <p>{area.summary[lang]}</p>
           <a href={`/${lang}/business/#${area.id}`}>{lang === "en" ? "Explore" : "詳しく見る"}<span aria-hidden="true"> →</span></a>

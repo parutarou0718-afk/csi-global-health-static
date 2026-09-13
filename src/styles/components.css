@@ -55,12 +55,12 @@
 .page-placeholder__lead { margin-top: var(--space-4); font-size: var(--font-size-lg); }
 .page-placeholder__lead + p { margin-top: var(--space-5); color: var(--csi-text-muted); }
 
-.site-footer { padding-top: var(--space-8); background: var(--csi-navy-dark); color: var(--csi-white); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: var(--space-6); padding-bottom: var(--space-8); }
+.site-footer { padding-top: var(--space-6); background: var(--csi-navy-dark); color: var(--csi-white); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: var(--space-5); padding-bottom: var(--space-6); }
 .site-footer h2 { margin-bottom: var(--space-3); font-size: var(--font-size-base); }
-.site-footer nav { display: grid; gap: var(--space-2); }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .site-footer p,
 .site-footer a { color: color-mix(in srgb, var(--csi-white), transparent 20%); font-size: var(--font-size-sm); }
 .footer-brand strong { color: var(--csi-white); }
 .footer-brand small { color: color-mix(in srgb, var(--csi-white), transparent 25%); }
-.footer-legal { padding-block: var(--space-4); border-top: var(--border-width) solid color-mix(in srgb, var(--csi-white), transparent 80%); color: color-mix(in srgb, var(--csi-white), transparent 30%); font-size: var(--font-size-xs); }
+.footer-legal { padding-block: var(--space-3); border-top: var(--border-width) solid color-mix(in srgb, var(--csi-white), transparent 80%); color: color-mix(in srgb, var(--csi-white), transparent 30%); font-size: var(--font-size-xs); }

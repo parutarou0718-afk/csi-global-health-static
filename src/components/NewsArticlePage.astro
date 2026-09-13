@@ -1,0 +1,25 @@
+---
+import { newsItems } from "../data/news";
+import { newsPage as enNews } from "../i18n/en";
+import { newsPage as jaNews } from "../i18n/ja";
+import type { Lang } from "../lib/i18n";
+
+type Props = {
+  lang: Lang;
+  item: (typeof newsItems)[number];
+};
+
+const { lang, item } = Astro.props as Props;
+const copy = lang === "en" ? enNews : jaNews;
+---
+
+<article class="news-article section">
+  <div class="container news-article__inner">
+    <a class="news-article__back" href={`/${lang}/news/`}>← {copy.article.back}</a>
+    <p class="eyebrow">{copy.hero.eyebrow}</p>
+    <h1>{item.title[lang]}</h1>
+    <img src={item.image} alt="" />
+    <p class="news-article__summary">{item.summary[lang]}</p>
+    <p>{item.body[lang]}</p>
+  </div>
+</article>

@@ -31,17 +31,17 @@
 
 - [x] **Step 1: Write the failing layout assertions**
 
-Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `40%` map offset, a `60%` map width, a `30rem` copy width, a `24rem` title width and the dedicated Hero font token.
+Add assertions requiring a `25rem` Hero minimum height, an `18rem` grid minimum height, a `45%` map offset, a `55%` map width, a `30rem` copy width, a `25rem` title width and the dedicated Hero font token.
 
 - [x] **Step 2: Run the focused test to verify it fails**
 
 Run: `node --test tests/homepage-components.test.mjs`
 
-Expected: FAIL because the existing desktop map split is `32%` and `68%`.
+Expected: FAIL because the existing desktop map split is `40%` and `60%`.
 
 - [x] **Step 3: Implement the smallest desktop-only style update**
 
-Set a slightly smaller dedicated Hero title scale and independently widen the copy, title and summary line lengths into the map's pale transition area. Leave the existing responsive media queries intact.
+Set a slightly smaller dedicated Hero title scale, store the four English title lines with its content data, and independently widen the copy, title and summary line lengths into the map's pale transition area. Leave the existing responsive media queries intact.
 
 - [x] **Step 4: Run the full verification**
 

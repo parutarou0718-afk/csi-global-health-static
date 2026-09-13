@@ -9,7 +9,7 @@ const { hero } = homeContent[lang];
   <div class="container home-hero__grid">
     <div class="home-hero__copy">
       <p class="eyebrow">{hero.eyebrow}</p>
-      <h1>{hero.title}</h1>
+      <h1>{hero.titleLines ? hero.titleLines.map((line) => <span class="home-hero__title-line">{line}</span>) : hero.title}</h1>
       <p>{hero.summary}</p>
       <div class="home-hero__actions">
         <a class="button button--primary" href={`/${lang}/about/`}>{hero.primaryLabel}<span aria-hidden="true"> →</span></a>

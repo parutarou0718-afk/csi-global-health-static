@@ -1,0 +1,41 @@
+---
+import { businessAreas } from "../data/business";
+import type { Lang } from "../lib/i18n";
+const { lang } = Astro.props as { lang: Lang };
+const ja = lang === "ja";
+const copy = ja ? {
+  hero: "粒子線医療・医療技術・国際連携をつなぐ6つの事業領域", overview: "6つの主要事業領域", details: "主要領域の詳細", translation: "研究から臨床応用・産業化へ", cta: "連携・導入・国際展開のご相談", contact: "お問い合わせ", experts: "専門家ネットワークを見る",
+  detail: [["粒子線医療の中核戦略", "重粒子線・陽子線・BNCTに関する研究、技術、臨床応用の連携を目指します。"], ["技術・装置・研究開発", "加速器、中性子源、DDS、イメージングと関連技術の協力をつなげます。"], ["国際連携と事業化支援", "国際的な研究・臨床・産業ネットワークとの協力を支えます。"]]
+} : {
+  hero: "Six business areas connecting particle medicine, medical technology and international collaboration", heroDescription: "CSI Global Health connects research, clinical translation, technology and international collaboration across particle medicine.", overviewLabel: "BUSINESS OVERVIEW", overview: "Six Core Business Areas", detailsLabel: "OUR FIELDS", details: "Key Areas in Focus", translation: "From Research to Clinical Translation", cta: "Discuss Collaboration, Introduction and Global Development", contact: "Contact Us", experts: "Meet the Scientific Network",
+  detail: [["Particle Medicine Strategy", "Connecting research, technology and clinical translation across heavy-ion, proton and BNCT fields."], ["Technology, Equipment & Research", "Linking accelerators, neutron sources, DDS, imaging and related technology collaboration."], ["Global Collaboration & Translation", "Supporting practical links across international research, clinical and industry networks."]]
+};
+const images = ["/images/business/medical-equipment.png", "/images/business/research-imaging.png", "/images/business/global-network.png"];
+const heroDescription = ja ? "CSI Global Healthは、粒子線医療における研究、臨床応用、技術、国際連携をつなぎます。" : copy.heroDescription;
+const overviewLabel = ja ? "事業概要" : copy.overviewLabel;
+const detailsLabel = ja ? "主要領域" : copy.detailsLabel;
+const overviewIcons = [
+  "/images/business/icons/network.png",
+  "/images/business/icons/molecule.png",
+  "/images/business/icons/atom.png",
+  "/images/business/icons/dna.png",
+  "/images/business/icons/engineering.png",
+  "/images/business/icons/global.png",
+];
+const translationSteps = ja ? [
+  { title: "研究基盤", description: "基礎研究・シーズ創出", icon: "/images/business/translation/research.png" },
+  { title: "医療技術", description: "技術開発・前臨床研究", icon: "/images/business/translation/technology.png" },
+  { title: "臨床応用", description: "臨床研究・医療実装", icon: "/images/business/translation/clinical.png" },
+  { title: "国際展開", description: "国際連携・産業化", icon: "/images/business/translation/global.png" },
+] : [
+  { title: "Research Foundation", description: "Basic research & seed development", icon: "/images/business/translation/research.png" },
+  { title: "Medical Technology", description: "Technology development & preclinical research", icon: "/images/business/translation/technology.png" },
+  { title: "Clinical Translation", description: "Clinical research & medical implementation", icon: "/images/business/translation/clinical.png" },
+  { title: "Global Development", description: "International collaboration & industrialisation", icon: "/images/business/translation/global.png" },
+];
+---
+<section class="business-hero"><div class="container business-hero__grid"><div><p class="eyebrow">CSI GLOBAL HEALTH</p><h1>{ja ? "事業領域" : "Business Areas"}</h1><p class="business-hero__lead">{copy.hero}</p><p>{heroDescription}</p></div></div></section>
+<section class="business-overview section"><div class="container"><p class="eyebrow">{overviewLabel}</p><h2>{copy.overview}</h2><div class="business-overview__grid">{businessAreas.map((area, index) => <article id={area.id}><img src={overviewIcons[index]} alt="" /><h3>{area.title[lang]}</h3><p>{area.summary[lang]}</p></article>)}</div></div></section>
+<section class="business-details section"><div class="container"><p class="eyebrow">{detailsLabel}</p><h2>{copy.details}</h2><div class="business-details__list">{copy.detail.map(([title, text], index) => <article class:list={["business-details__item", index % 2 === 1 && "business-details__item--reverse"]}><img src={images[index]} alt="" /><div class="business-details__content"><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>
+<section class="business-translation section"><div class="container"><p class="eyebrow">{ja ? "トランスレーション" : "TRANSLATION"}</p><h2>{copy.translation}</h2><ol class="business-translation__steps">{translationSteps.map((step) => <li class="business-translation__step"><img src={step.icon} alt="" /><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol></div></section>
+<section class="business-cta section"><div class="container"><h2>{copy.cta}</h2><a class="button button--primary" href={`/${lang}/contact/`}>{copy.contact} <span aria-hidden="true">→</span></a><a class="button button--secondary" href={`/${lang}/experts/`}>{copy.experts} <span aria-hidden="true">→</span></a></div></section>

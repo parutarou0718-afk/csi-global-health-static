@@ -1,0 +1,36 @@
+---
+import { companyContact } from "../data/company";
+import { contactPage as enContact } from "../i18n/en";
+import { contactPage as jaContact } from "../i18n/ja";
+import type { Lang } from "../lib/i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const copy = lang === "en" ? enContact : jaContact;
+---
+
+<section class="contact-hero section">
+  <div class="container">
+    <p class="eyebrow">{copy.hero.eyebrow}</p>
+    <h1>{copy.hero.title}</h1>
+  </div>
+</section>
+
+<section class="contact-details section">
+  <div class="container contact-details__inner">
+    <h2>{copy.details.title}</h2>
+    <dl class="contact-details__list">
+      <div>
+        <dt>{companyContact.address.label[lang]}</dt>
+        <dd>{companyContact.address.value[lang]}</dd>
+      </div>
+      <div>
+        <dt>{companyContact.email.label[lang]}</dt>
+        <dd><a href={`mailto:${companyContact.email.value[lang]}`}>{companyContact.email.value[lang]}</a></dd>
+      </div>
+      <div>
+        <dt>{companyContact.phone.label[lang]}</dt>
+        <dd><a href={`tel:${companyContact.phone.value[lang]}`}>{companyContact.phone.value[lang]}</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
